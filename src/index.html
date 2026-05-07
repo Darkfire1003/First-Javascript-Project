@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <title>Michael Kuscher -- DogWiki</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="output.css" rel="stylesheet" />
+    <link href="input.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-primary">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+
+    <header class="z-30 sticky top-0 w-full bg-primary text-white">
+      <div
+        class="container flex items-center justify-between h-16 lg:h-20 relative"
+      >
+        <a
+          href="index.html"
+          aria-label="Michael Kuscher – Startseite"
+          class="text-lg font-bold tracking-tight text-white"
+        >
+          Michael <span class="text-secondary" aria-hidden="true">Kuscher</span>
+        </a>
+
+        <button
+          id="burger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navBar"
+          aria-label="Navigationsmenü öffnen"
+          class="hamburger hamburger--collapse lg:hidden!"
+        >
+          <span class="hamburger-box" aria-hidden="true">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+
+        <nav
+          id="navBar"
+          aria-label="Hauptnavigation"
+          class="hidden absolute top-full left-0 w-full bg-primary lg:static lg:block lg:w-auto lg:border-0 lg:bg-transparent"
+        >
+          <ul
+            class="flex flex-col text-right font-semibold text-sm lg:flex-row lg:items-center lg:gap-6"
+          >
+            <li>
+              <a
+                href="#projekte"
+                class="block px-5 py-3 lg:p-0 hover:text-secondary transition-colors"
+                >Projekte</a
+              >
+            </li>
+            <li>
+              <button
+                id="toggleFormBtn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="contactFormSection"
+                class="block px-5 py-3 lg:p-0 hover:text-secondary transition-colors font-semibold text-sm bg-transparent border-0 cursor-pointer w-full text-right lg:text-left"
+              >
+                Kontakt
+              </button>
+            </li>
+            <li>
+              <a
+                href="policy.html"
+                class="block px-5 py-3 lg:p-0 hover:text-secondary transition-colors"
+                >Datenschutz</a
+              >
+            </li>
+            <li>
+              <a
+                href="Imprint.html"
+                class="block px-5 py-3 lg:p-0 hover:text-secondary transition-colors"
+                >Impressum</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="bg-primary px-5" id="main-content" tabindex="-1">
+      <section
+        id="contactFormSection"
+        aria-labelledby="contact-heading"
+        hidden
+        class="py-16 bg-blue-50 border-y border-blue-100"
+      >
+        <div class="max-w-2xl mx-auto">
+          <div class="text-center mb-10">
+            <p
+              class="text-amber-700 font-semibold text-sm tracking-widest uppercase"
+            >
+              Schreib mir
+            </p>
+            <h2
+              id="contact-heading"
+              class="mt-2 text-2xl font-bold text-stone-900 lg:text-3xl"
+            >
+              Kontaktformular
+            </h2>
+            <div class="section-divider" role="presentation"></div>
+          </div>
+
+          <div
+            id="formErrors"
+            role="alert"
+            hidden
+            class="bg-red-50 border border-red-300 text-red-800 rounded-lg px-5 py-4 mb-6"
+          >
+            <h3 class="font-semibold text-sm mb-1">
+              Bitte korrigiere folgende Felder:
+            </h3>
+            <p id="formErrorsText" class="text-sm"></p>
+          </div>
+
+          <div
+            id="formSuccess"
+            role="status"
+            hidden
+            class="bg-green-50 border border-green-300 text-green-800 rounded-lg px-5 py-4 mb-6"
+          >
+            <p id="formSuccessText" class="text-sm font-semibold"></p>
+          </div>
+
+          <form
+            id="contactForm"
+            novalidate
+            aria-label="Kontaktformular"
+            class="bg-white rounded-2xl shadow-md p-8 flex flex-col gap-5"
+          >
+            <div class="flex flex-col gap-1">
+              <label
+                for="inputName"
+                class="text-sm font-semibold text-slate-700"
+              >
+                Name <abbr title="Pflichtfeld">*</abbr>
+              </label>
+              <input
+                type="text"
+                id="inputName"
+                name="name"
+                required
+                aria-required="true"
+                aria-describedby="inputName-errorBox"
+                autocomplete="name"
+                class="form-input rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none transition"
+                placeholder="Dein vollständiger Name"
+              />
+              <div id="inputName-errorBox" hidden class="error-box">
+                <p class="text-xs text-red-600">Bitte gib deinen Namen ein.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label
+                for="inputEmail"
+                class="text-sm font-semibold text-slate-700"
+              >
+                E-Mail-Adresse <abbr title="Pflichtfeld">*</abbr>
+              </label>
+              <input
+                type="email"
+                id="inputEmail"
+                name="email"
+                required
+                aria-required="true"
+                aria-describedby="inputEmail-errorBox"
+                autocomplete="email"
+                class="form-input rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none transition"
+                placeholder="deine@email.at"
+              />
+              <div id="inputEmail-errorBox" hidden class="error-box">
+                <p class="text-xs text-red-600">
+                  Bitte gib eine gültige E-Mail-Adresse ein.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label
+                for="inputSubject"
+                class="text-sm font-semibold text-slate-700"
+                >Betreff</label
+              >
+              <input
+                type="text"
+                id="inputSubject"
+                name="subject"
+                autocomplete="off"
+                class="form-input rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none transition"
+                placeholder="Worum geht es?"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label
+                for="inputMessage"
+                class="text-sm font-semibold text-slate-700"
+                >Nachricht</label
+              >
+              <textarea
+                id="inputMessage"
+                name="message"
+                rows="4"
+                class="form-input rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none transition resize-y"
+                placeholder="Deine Nachricht an mich …"
+              ></textarea>
+            </div>
+
+            <fieldset class="border border-slate-200 rounded-lg px-4 py-3">
+              <legend class="text-sm font-semibold text-slate-700 px-1">
+                Bevorzugter Kontaktweg
+              </legend>
+              <div class="flex flex-col gap-2 mt-2">
+                <label
+                  class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="contactMethod"
+                    value="email"
+                    checked
+                    class="accent-amber-700 w-4 h-4"
+                  />
+                  Per E-Mail
+                </label>
+                <label
+                  class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="contactMethod"
+                    value="phone"
+                    class="accent-amber-700 w-4 h-4"
+                  />
+                  Per Telefon
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="flex flex-col gap-1">
+              <div class="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="privacyCheck"
+                  name="privacy"
+                  required
+                  aria-required="true"
+                  aria-describedby="privacyCheck-errorBox"
+                  class="accent-amber-700 w-4 h-4 mt-0.5 shrink-0 cursor-pointer"
+                />
+                <label
+                  for="privacyCheck"
+                  class="text-sm text-slate-700 cursor-pointer"
+                >
+                  Ich habe die
+                  <a
+                    href="policy.html"
+                    class="text-amber-700 underline hover:text-amber-800"
+                    >Datenschutzerklärung</a
+                  >
+                  gelesen und stimme zu.
+                  <abbr title="Pflichtfeld">*</abbr>
+                </label>
+              </div>
+              <div id="privacyCheck-errorBox" hidden class="error-box">
+                <p class="text-xs text-red-600">
+                  Bitte stimme der Datenschutzerklärung zu.
+                </p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400">
+              <abbr title="Pflichtfeld">*</abbr> Pflichtfelder
+            </p>
+
+            <div class="flex gap-3 flex-wrap">
+              <button type="submit" class="btn flex-1">
+                Formular absenden
+              </button>
+              <button type="button" id="resetBtn" class="btn-outline flex-1">
+                Zurücksetzen
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div
+        id="formPopup"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="popup-heading"
+        hidden
+        class="popup-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+      >
+        <div
+          class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 relative popup-inner"
+        >
+          <h2 id="popup-heading" class="text-xl font-bold text-stone-900 mb-4">
+            ✅ Formular erfolgreich abgesendet
+          </h2>
+
+          <div
+            id="popup-content"
+            aria-live="polite"
+            aria-atomic="true"
+            class="text-sm text-slate-700"
+          ></div>
+
+          <button
+            id="popupClose"
+            type="button"
+            aria-label="Popup schließen"
+            class="btn mt-6 w-full"
+          >
+            Schließen
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-5 items-stretch"
+      >
+        <section class="p-5 h-full xl:col-span-2">
+          <div
+            class="bg-secondary h-full w-full flex flex-col text-center border-5 mt-10 p-10 rounded-2xl"
+          >
+            <div class="flex flex-col items-center text-center">
+              <h1 class="mt-10 font-bold text-2xl pb-5">! Namens Liste !</h1>
+            </div>
+            <div
+              class="grid grid-cols-1 gap-3 w-fit mx-auto justify-items-center"
+            >
+              <input
+                class="border-2 text-center bg-white py-1 px-2 rounded-xl justify-items-center"
+                type="text"
+                placeholder="Vorname"
+                id="nameInput"
+              />
+
+              <input
+                class="border-2 text-center bg-white py-1 px-2 rounded-xl justify-items-center"
+                type="text"
+                placeholder="Alter"
+                id="ageInput"
+              />
+
+              <button
+                onclick="addPerson()"
+                class="border-2 rounded-xl py-1 px-3 bg-green-500"
+                type="button"
+              >
+                Hinzufügen
+              </button>
+
+              <button
+                onclick="deletePerson()"
+                class="border-2 rounded-xl py-1 px-4 bg-red-500"
+                type="button"
+              >
+                Entfernen
+              </button>
+            </div>
+            <ul id="addList" class="mt-8 space-y-2 max-w-md mx-auto"></ul>
+          </div>
+        </section>
+
+        <section class="p-5 h-full xl:col-span-2">
+          <div
+            class="bg-secondary h-full w-full flex flex-col text-center border-5 mt-10 p-10 rounded-2xl"
+          >
+            <div class="flex flex-col items-center text-center">
+              <h1 class="mt-10 font-bold text-2xl pb-5">! BMI Rechner !</h1>
+
+              <div class="pb-5">
+                <p>Deine Größe</p>
+                <div class="mb-5">
+                  <input
+                    type="number"
+                    class="bg-white border-2 text-center gap-5"
+                    placeholder="in cm"
+                    id="inputGroesse"
+                  />
+                </div>
+                <p>Dein Gewicht</p>
+                <div class="mb-5">
+                  <input
+                    type="number"
+                    class="bg-white border-2 text-center"
+                    placeholder="in kg"
+                    id="inputGewicht"
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="cursor-pointer mt-5 border-2 font-bold w-fit px-3 rounded-lg border-black bg-blue-400 text-white"
+                  onclick="bmiRechner()"
+                >
+                  Jetzt Auswerten
+                </button>
+              </div>
+              <p
+                class="font-bold text-xl p-5 rounded-3xl max-w-2xl"
+                id="ergebnis"
+              ></p>
+            </div>
+            <div class="text-left mt-5">
+              <p class="font-bold text-xs" id="historie"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-5 h-full xl:col-span-2">
+          <div
+            class="bg-secondary flex flex-col text-center border-5 p-5 pb-10 rounded-2xl mt-10 h-full w-full"
+          >
+            <h1 class="mt-10 font-bold text-2xl pb-5">! TO-DO !</h1>
+
+            <div class="flex flex-col flex-1 items-center">
+              <ul id="listItems" class="mb-6 space-y-2 flex-1"></ul>
+
+              <div class="mt-auto w-full max-w-[320px] mx-auto">
+                <label for="inputList" class="sr-only">Neue Aufgabe</label>
+
+                <div class="flex w-full overflow-hidden rounded-lg">
+                  <input
+                    type="text"
+                    id="inputList"
+                    placeholder="Was fehlt?"
+                    class="bg-white h-10 min-w-0 flex-1 px-3 text-center"
+                  />
+
+                  <button
+                    type="button"
+                    onclick="addTo()"
+                    class="h-10 px-4 bg-blue-400 text-white font-bold flex items-center justify-center leading-none whitespace-nowrap shrink-0"
+                  >
+                    Hinzufügen
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p id="errorMsg" class="text-red-500 mt-2"></p>
+          </div>
+        </section>
+
+        <section class="p-5 h-full xl:col-span-2 xl:col-start-2">
+          <div
+            class="bg-secondary p-5 h-full w-full flex flex-col text-center border-5 mt-10 rounded-2xl"
+          >
+            <div class="flex flex-col gap-4 mt-10 items-center">
+              <h1>Türsteher App</h1>
+              <div class="w-full max-w-[220px] flex flex-col gap-4">
+                <input
+                  class="border-2 p-1 bg-white w-full h-10 text-center"
+                  id="age"
+                  type="number"
+                  placeholder="Gebe dein Alter ein"
+                />
+                <input
+                  class="border-2 p-1 bg-white w-full h-10 text-center"
+                  id="firstName"
+                  type="text"
+                  placeholder="Gebe dein Vorname ein"
+                />
+                <button
+                  type="button"
+                  onclick="check()"
+                  class="cursor-pointer border-2 font-bold w-full h-10 rounded-lg border-black bg-blue-400 text-white flex items-center justify-center"
+                >
+                  Check
+                </button>
+                <button
+                  class="cursor-pointer font-bold border-2 w-full h-10 rounded-lg border-black bg-blue-400 text-white flex items-center justify-center"
+                  type="button"
+                  onclick="location.reload()"
+                >
+                  Neu laden
+                </button>
+              </div>
+            </div>
+            <p class="pt-10 font-bold text-xl" id="output"></p>
+          </div>
+        </section>
+
+        <section class="p-5 h-full xl:col-span-2">
+          <div
+            class="bg-secondary p-10 h-full w-full flex flex-col text-center border-5 mt-10 rounded-2xl"
+          >
+            <h1 class="mt-10">Hallo Welt !!!</h1>
+
+            <div class="grid grid-cols-2 gap-5 my-5">
+              <button
+                type="button"
+                onclick="light()"
+                class="font-bold border-2 rounded-full w-full h-10 bg-white flex items-center justify-center leading-none"
+              >
+                LIGHT
+              </button>
+
+              <button
+                type="button"
+                onclick="dark()"
+                class="font-bold border-2 rounded-full w-full h-10 bg-white flex items-center justify-center leading-none"
+              >
+                DARK
+              </button>
+
+              <button
+                type="button"
+                onclick="small()"
+                class="font-bold border-2 rounded-full w-full h-10 bg-white flex items-center justify-center leading-none"
+              >
+                SMALL
+              </button>
+
+              <button
+                type="button"
+                onclick="big()"
+                class="font-bold border-2 rounded-full w-full h-10 bg-white flex items-center justify-center leading-none"
+              >
+                BIG
+              </button>
+            </div>
+
+            <div class="mb-10 flex justify-center">
+              <button
+                type="button"
+                onclick="reset()"
+                class="font-bold border-2 rounded-full min-w-[160px] h-10 bg-white flex items-center justify-center leading-none px-6"
+              >
+                !!RESET!!
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="bg-primary mt-10">
+      <div
+        class="container flex flex-col items-center justify-center py-8 md:flex-row md:justify-between gap-4"
+      >
+        <span class="font-bold text-white text-base tracking-tight">
+          Michael <span class="text-secondary">Kuscher</span>
+        </span>
+        <small class="text-sm text-secondary">© 2025 Michael Kuscher</small>
+        <nav aria-label="Footer-Navigation">
+          <ul class="flex gap-4 text-sm list-none p-0">
+            <li>
+              <a
+                href="policy.html"
+                class="text-white hover:text-secondary transition-colors"
+                >Datenschutz</a
+              >
+            </li>
+            <li>
+              <a
+                href="Imprint.html"
+                class="text-white hover:text-secondary transition-colors"
+                >Impressum</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="javascript/script.js"></script>
+  </body>
+</html>

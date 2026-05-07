@@ -1,0 +1,29 @@
+{
+	"name": "tailwind-instal",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"devDependencies": {
+		"@tailwindcss/cli": "^4.2.2",
+		"prettier": "3.8.1",
+		"tailwindcss": "^4.2.4"
+	},
+	"directories": {
+		"doc": "docs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Darkfire1003/Portfolio.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Darkfire1003/Portfolio/issues"
+	},
+	"homepage": "https://github.com/Darkfire1003/Portfolio#readme"
+}

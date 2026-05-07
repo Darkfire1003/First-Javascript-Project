@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <title>Michael Kuscher – Impressum</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="output.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-slate-50 text-slate-800">
+    <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+
+    <!-- ══ HEADER ══ -->
+
+    <header
+      class="sticky top-0 w-full bg-primary z-30 border-b border-slate-100"
+    >
+      <div
+        class="container flex items-center justify-between h-16 lg:h-20 relative"
+      >
+        <a
+          href="index.html"
+          aria-label="Michael Kuscher – Startseite"
+          class="text-lg font-bold tracking-tight text-white"
+        >
+          Michael
+
+          <span class="text-secondary" aria-hidden="true">Kuscher</span>
+        </a>
+
+        <button
+          id="burger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navBar"
+          aria-label="Navigationsmenü öffnen"
+          class="hamburger hamburger--collapse lg:hidden!"
+        >
+          <span class="hamburger-box" aria-hidden="true">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+
+        <nav
+          id="navBar"
+          aria-label="Hauptnavigation"
+          class="hidden absolute top-full left-0 w-full bg-primary text-white border-b border-slate-100 lg:static lg:block lg:w-auto lg:border-0 lg:bg-transparent"
+        >
+          <ul
+            class="flex flex-col text-right font-semibold text-sm lg:flex-row lg:items-center lg:gap-6"
+          >
+            <li>
+              <a
+                href="index.html"
+                class="block px-5 py-3 lg:p-0 hover:text-primary transition-colors"
+                >Projekte</a
+              >
+            </li>
+            <li>
+              <button
+                id="toggleFormBtn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="contactFormSection"
+                class="nav-toggle-btn block px-5 py-3 lg:p-0 hover:text-primary transition-colors font-semibold text-sm bg-transparent border-0 cursor-pointer w-full text-right lg:text-left"
+              >
+                Kontakt
+              </button>
+            </li>
+            <li>
+              <a
+                href="policy.html"
+                class="block px-5 py-3 lg:p-0 hover:text-primary transition-colors"
+                >Datenschutz</a
+              >
+            </li>
+            <li>
+              <a
+                href="Imprint.html"
+                class="block px-5 py-3 lg:p-0 hover:text-primary transition-colors"
+                >Impressum</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1" class="flex-1">
+      <section
+        id="contactFormSection"
+        aria-labelledby="contact-heading"
+        hidden
+        class="py-16 bg-blue-50 border-y border-blue-100"
+      >
+        <div class="container max-w-2xl">
+          <div class="text-center mb-10">
+            <p
+              class="text-primary font-semibold text-sm tracking-widest uppercase"
+            >
+              Schreib mir
+            </p>
+            <h2
+              id="contact-heading"
+              class="mt-2 text-2xl font-bold text-slate-900 lg:text-3xl"
+            >
+              Kontaktformular
+            </h2>
+            <div class="section-divider" role="presentation"></div>
+          </div>
+
+          <!-- ÄNDERUNG: role="alert" allein reicht – es impliziert bereits aria-live="assertive"
+               und aria-atomic="true". Dopplung entfernt um Redundanz zu vermeiden (WCAG 4.1.3). -->
+          <div
+            id="formErrors"
+            role="alert"
+            hidden
+            class="bg-red-50 border border-red-300 text-red-800 rounded-lg px-5 py-4 mb-6"
+          >
+            <h3 class="font-semibold text-sm mb-1">
+              Bitte korrigiere folgende Felder:
+            </h3>
+            <p id="formErrorsText" class="text-sm"></p>
+          </div>
+
+          <!-- role="status" impliziert aria-live="polite" – aria-live-Dopplung entfernt -->
+          <div
+            id="formSuccess"
+            role="status"
+            hidden
+            class="bg-green-50 border border-green-300 text-green-800 rounded-lg px-5 py-4 mb-6"
+          >
+            <p id="formSuccessText" class="text-sm font-semibold"></p>
+          </div>
+
+          <form
+            id="contactForm"
+            novalidate
+            aria-label="Kontaktformular"
+            class="bg-white rounded-2xl shadow-md p-8 flex flex-col gap-5"
+          >
+            <!-- ── Name (required) ── -->
+            <div class="flex flex-col gap-1">
+              <label
+                for="inputName"
+                class="text-sm font-semibold text-slate-700"
+              >
+                Name
+                <!-- ÄNDERUNG: aria-label="Pflichtfeld" auf <abbr> entfernt.
+                     aria-label ist auf nicht-interaktiven Elementen nicht spezifikationskonform.
+                     Das title-Attribut allein genügt für sehende Nutzer; Screenreader-Nutzer
+                     hören "Pflichtfeld" durch aria-required auf dem Input. -->
+                <abbr title="Pflichtfeld">*</abbr>
+              </label>
+              <input
+                type="text"
+                id="inputName"
+                name="name"
+                required
+                aria-required="true"
+                aria-describedby="inputName-errorBox"
+                autocomplete="name"
+                class="form-input rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none transition"
+                placeholder="Dein vollständiger Name"
+              />
+              <!-- ÄNDERUNG: role="alert" allein reicht (impliziert assertive + atomic).
+                   aria-live und aria-atomic entfernt um Redundanz zu vermeiden. -->
+              <div
+                id="inputName-errorBox"
+                role="alert"
+                hidden
+                class="error-box"
+              >
+                <p class="text-xs text-red-600">Bitte gib deinen Namen ein.</p>
+              </div>
+            </div>
+
+            <!-- ── E-Mail (required) ── -->
+            <div class="flex flex-col gap-1">
+              <label
+                for="inputEmail"
+                class="text-sm font-semibold text-slate-700"
+              >
+                E-Mail-Adresse
+                <abbr title="Pflichtfeld">*</abbr>
+              </label>
+              <input
+                type="email"
+                id="inputEmail"
+                name="email"
+                required
+                aria-required="true"
+                aria-describedby="inputEmail-errorBox"
+                autocomplete="email"
+                class="form-input rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none transition"
+                placeholder="deine@email.at"
+              />
+              <div
+                id="inputEmail-errorBox"
+                role="alert"
+                hidden
+                class="error-box"
+              >
+                <p class="text-xs text-red-600">
+                  Bitte gib eine gültige E-Mail-Adresse ein.
+                </p>
+              </div>
+            </div>
+
+            <!-- ── Betreff (optional) ── -->
+            <div class="flex flex-col gap-1">
+              <label
+                for="inputSubject"
+                class="text-sm font-semibold text-slate-700"
+                >Betreff</label
+              >
+              <input
+                type="text"
+                id="inputSubject"
+                name="subject"
+                autocomplete="off"
+                class="form-input rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none transition"
+                placeholder="Worum geht es?"
+              />
+            </div>
+
+            <!-- ── Nachricht (optional) ── -->
+            <div class="flex flex-col gap-1">
+              <label
+                for="inputMessage"
+                class="text-sm font-semibold text-slate-700"
+                >Nachricht</label
+              >
+              <textarea
+                id="inputMessage"
+                name="message"
+                rows="4"
+                class="form-input rounded-lg border border-slate-300 px-4 py-2.5 text-sm outline-none transition resize-y"
+                placeholder="Deine Nachricht an mich …"
+              ></textarea>
+            </div>
+
+            <fieldset class="border border-slate-200 rounded-lg px-4 py-3">
+              <legend class="text-sm font-semibold text-slate-700 px-1">
+                Bevorzugter Kontaktweg
+              </legend>
+              <div class="flex flex-col gap-2 mt-2">
+                <label
+                  class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="contactMethod"
+                    value="email"
+                    checked
+                    class="accent-primary w-4 h-4"
+                  />
+                  Per E-Mail
+                </label>
+                <label
+                  class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="contactMethod"
+                    value="phone"
+                    class="accent-primary w-4 h-4"
+                  />
+                  Per Telefon
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="flex flex-col gap-1">
+              <div class="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="privacyCheck"
+                  name="privacy"
+                  required
+                  aria-required="true"
+                  aria-describedby="privacyCheck-errorBox"
+                  class="accent-primary w-4 h-4 mt-0.5 shrink-0 cursor-pointer"
+                />
+                <label
+                  for="privacyCheck"
+                  class="text-sm text-slate-700 cursor-pointer"
+                >
+                  Ich habe die
+                  <a
+                    href="policy.html"
+                    class="text-primary underline hover:text-blue-700"
+                    >Datenschutzerklärung</a
+                  >
+                  gelesen und stimme zu.
+                  <abbr title="Pflichtfeld">*</abbr>
+                </label>
+              </div>
+              <div
+                id="privacyCheck-errorBox"
+                role="alert"
+                hidden
+                class="error-box"
+              >
+                <p class="text-xs text-red-600">
+                  Bitte stimme der Datenschutzerklärung zu.
+                </p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-400">
+              <abbr title="Pflichtfeld">*</abbr> Pflichtfelder
+            </p>
+
+            <div class="flex gap-3 flex-wrap">
+              <button type="submit" class="btn flex-1">
+                Formular absenden
+              </button>
+              <button type="button" id="resetBtn" class="btn-outline flex-1">
+                Zurücksetzen
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div
+        id="formPopup"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="popup-heading"
+        hidden
+        class="popup-overlay fixed inset-0 z-50 flex items-center justify-center p-4"
+      >
+        <div
+          class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 relative popup-inner"
+        >
+          <h2 id="popup-heading" class="text-xl font-bold text-slate-900 mb-4">
+            ✅ Formular erfolgreich abgesendet
+          </h2>
+          <!-- ÄNDERUNG: aria-hidden="true" vom äußeren Dialog-Container entfernt –
+               wird nur noch per JS gesetzt wenn hidden gesetzt/entfernt wird.
+               aria-live="polite" auf dem Content-Div reicht für dynamischen Inhalt. -->
+          <div
+            id="popup-content"
+            aria-live="polite"
+            aria-atomic="true"
+            class="text-sm text-slate-700"
+          >
+            <!-- Wird per JS befüllt -->
+          </div>
+          <button
+            id="popupClose"
+            type="button"
+            aria-label="Popup schließen"
+            class="btn mt-6 w-full"
+          >
+            Schließen
+          </button>
+        </div>
+      </div>
+      <section class="py-8" aria-labelledby="imprint-heading">
+        <div class="container pb-8 text-center">
+          <h1 id="imprint-heading">Impressum</h1>
+
+          <p class="mt-4">
+            <b>Inhaltlich Verantwortlicher und Betreiber dieser Website:</b>
+          </p>
+          <p>Michael Kuscher</p>
+
+          <p>
+            <b>Anschrift:</b><br />
+            Universitätsstraße 25, 9020 Klagenfurt am Wörthersee, Österreich
+          </p>
+
+          <p>
+            <b>Kontaktdaten:</b><br />
+            Telefon: +43 660 6553682<br />
+            E‑Mail:
+            <a href="mailto:m.kuscher@outlook.com">m.kuscher@outlook.com</a>
+          </p>
+
+          <p class="mt-6">
+            <b>Verwendungszweck dieser Website</b><br />
+            Diese Website dient ausschließlich zu Schul‑ und Ausbildungszwecken
+            im Rahmen des Coding‑School‑Projekts „CSAW Cooking".<br />
+            Es handelt sich um ein nicht‑kommerzielles Projekt ohne reale Waren‑
+            oder Dienstleistungsvermittlung.
+          </p>
+
+          <p class="mt-6">
+            <b>Haftungsausschluss</b><br />
+            Die Inhalte dieser Website wurden mit großer Sorgfalt erstellt.<br />
+            Eine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der
+            Inhalte wird jedoch nicht übernommen.<br />
+            Für Schäden, die aus der Nutzung oder Nicht‑Nutzung der
+            bereitgestellten Informationen entstehen, wird keine Haftung
+            übernommen.
+          </p>
+
+          <p class="mt-6">
+            <b>Externe Links</b><br />
+            Die Website weist auf externe Seiten durch Links hin. Für deren
+            Inhalt ist der jeweilige Betreiber verantwortlich.<br />
+            Sollte ein Link auf eine Seite mit rechtswidrigem Inhalt führen,
+            ersuchen wir um sofortige Benachrichtigung, damit der Link entfernt
+            werden kann.
+          </p>
+
+          <p class="mt-6">
+            <b>Urheberrecht</b><br />
+            Sämtliche Seiten, Bilder, Texte und Designs unterliegen, soweit
+            rechtlich möglich, den Urheberrechten des Seitenbetreibers oder der
+            jeweiligen Dritten.<br />
+            Eine Nutzung der Inhalte ohne ausdrückliche Zustimmung des
+            Rechteinhabers ist nicht zulässig.
+          </p>
+
+          <p class="mt-6 text-sm text-gray-500">
+            Rechtstextmuster inspiriert von generischen Rechts‑Vorlagen für
+            persönliche Websites.
+          </p>
+        </div>
+      </section>
+
+      <div
+        id="popUp"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="popUp-heading"
+        hidden
+        class="fixed inset-0 z-30 flex items-center justify-center w-full bg-black/40"
+      >
+        <div
+          class="relative max-h-[90%] overflow-y-auto flex flex-col gap-3 px-8 py-8 mt-5 font-bold bg-white lg:w-1/4 rounded-2xl"
+        >
+          <h3 id="popUp-heading" class="text-center">Add Recipe</h3>
+
+          <div class="flex flex-col gap-1">
+            <label for="recipeName" class="text-sm font-semibold">Name</label>
+            <input
+              type="text"
+              id="recipeName"
+              placeholder="Name"
+              class="w-full p-2 bg-gray-300 rounded-t-2xl"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="recipeDescription" class="text-sm font-semibold"
+              >Beschreibung</label
+            >
+            <input
+              type="text"
+              id="recipeDescription"
+              placeholder="Description"
+              class="w-full p-2 bg-gray-300 h-30 text-start"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="recipeImageUrl" class="text-sm font-semibold"
+              >Bild-URL</label
+            >
+            <input
+              type="url"
+              id="recipeImageUrl"
+              placeholder="Image Url"
+              class="w-full p-2 bg-gray-300"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="recipeCategory" class="text-sm font-semibold"
+              >Kategorie</label
+            >
+            <select id="recipeCategory" class="w-full p-2 bg-gray-300">
+              <option>Main Course</option>
+              <option>Dessert</option>
+              <option>Appetizer</option>
+              <option>Breakfast</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="recipeDishCategory" class="text-sm font-semibold"
+              >Küche</label
+            >
+            <select id="recipeDishCategory" class="w-full p-2 bg-gray-300">
+              <option value="Italian">Italian</option>
+              <option value="Spanish">Spanish</option>
+              <option value="Vegan">Vegan</option>
+              <option value="Indian">Indian</option>
+              <option value="Russian">Russian</option>
+              <option value="Greek">Greek</option>
+              <option value="Thai">Thai</option>
+              <option value="Mexican">Mexican</option>
+              <option value="French">French</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Middle Eastern">Middle Eastern</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="recipeAuthor" class="text-sm font-semibold"
+              >Autor</label
+            >
+            <input
+              type="text"
+              id="recipeAuthor"
+              placeholder="Author"
+              class="w-full p-2 bg-gray-300"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="recipeCookingTime" class="text-sm font-semibold"
+              >Kochzeit (Minuten)</label
+            >
+            <input
+              type="number"
+              inputmode="numeric"
+              id="recipeCookingTime"
+              placeholder="Cooking Time"
+              class="w-full p-2 bg-gray-300 rounded-b-2xl"
+            />
+          </div>
+
+          <label
+            for="isFavorite"
+            class="flex items-center justify-center gap-2 mt-2 cursor-pointer"
+          >
+            <input type="checkbox" id="isFavorite" class="hidden peer" />
+            <span
+              class="text-2xl text-gray-400 transition peer-checked:text-red-500"
+              aria-hidden="true"
+              >❤</span
+            >
+            <span>Als Favorit speichern</span>
+          </label>
+
+          <button type="button" class="mx-8 mt-5 btn" onclick="rezeptNeu()">
+            Add Recipe
+          </button>
+
+          <button
+            type="button"
+            onclick="popDown()"
+            aria-label="Formular schließen"
+            class="absolute -right-3.5 -top-3.5 bg-primary h-10 w-10 rounded-full p-1.5 flex items-center justify-center"
+          >
+            <img
+              src="assets/gfx/close.svg"
+              alt=""
+              aria-hidden="true"
+              class="h-full w-full"
+            />
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-primary text-slate-300">
+      <div
+        class="container flex flex-col items-center justify-center py-8 md:flex-row md:justify-between lg:flex-row lg:justify-between gap-4"
+      >
+        <span class="font-bold text-white text-base tracking-tight">
+          Michael <span class="text-secondary">Kuscher</span>
+        </span>
+        <small class="text-sm text-white">© 2025 Michael Kuscher</small>
+        <nav aria-label="Footer-Navigation">
+          <ul class="flex gap-4 text-sm list-none p-0">
+            <li>
+              <a href="policy.html" class="hover:text-white transition-colors"
+                >Datenschutz</a
+              >
+            </li>
+            <li>
+              <a href="Imprint.html" class="hover:text-white transition-colors"
+                >Impressum</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="javascript/script.js"></script>
+  </body>
+</html>
